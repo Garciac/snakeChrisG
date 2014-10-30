@@ -69,7 +69,7 @@ function gameLoop() {
     }
 }
 
-/*gameDraw is where you can put in your background like color and height of the screen.*/ 
+/*gameDraw is where you can put in your background like color and height of the screen.*/
 function gameDraw() {
     context.fillStyle = "rgb(30, 199, 199)";
     context.fillRect(0, 0, screenWidth, screenHeight);
