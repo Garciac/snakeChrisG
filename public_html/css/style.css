@@ -3,11 +3,40 @@ body {
     padding: 0;
 }
 
-#game-screen {
+#game-screen { 
     display: block;
 }
-
-#gameOver {
+/*How Game Over and Scoreboard is displayed.*/
+#gameOver, #playHUD {
     position: absolute;
     visibility: hidden;
+}
+
+/*The h1, h2, h3 is about fonts and how you would want to put it on your game.*/
+h1, h2, h3 { 
+    font-family: 'Architects Daughter', cursive;
+    color: black;
+    text-align: center;
+}
+/*This is how big you want your Game Over to be and where to put your margins.*/
+.title{
+    font-size: 40px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+/*This is where you want to put borders in your restart button. */
+#restartButton {
+    border: 2px solid red;
+    border-radius: 10px;
+}
+
+/*This is where you design your restart button to look like by putting color and what effect you want to put when you click on it*/
+#restartButton:hover {
+    background-color: beige;
+}
+
+/*This the scoreboard where you can put margins for you can clear an area around an element.*/
+#scoreboard {
+    margin: 0px;
 }
