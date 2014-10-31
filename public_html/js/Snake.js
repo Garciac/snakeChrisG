@@ -59,6 +59,7 @@ function gameInitialize() {
     setState("PLAY");
 }
 
+/*This a loop for telling the game what to do.*/
 function gameLoop() {
     gameDraw();
     drawScoreboard();
@@ -88,7 +89,7 @@ function gameRestart() {
  * ---------------------------------------
  */
 
-/*snakeInitalize is where you can put the size you want to put in your snake and what direction it should start while playing.*/
+/*snakeInitalize is where you can put the size you want to put in your snake.*/
 function snakeInitialize() {
     snake = [];
     snakeLength = 1;
@@ -109,7 +110,7 @@ function snakeDraw() {
         context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
     }
 }
-
+/*This is the function where the snake can go.*/
 function snakeUpdate() {
     var snakeHeadX = snake[0].x;
     var snakeHeadY = snake[0].y;
@@ -143,7 +144,7 @@ function snakeUpdate() {
  *  Food Functions
  *------------------------------------- 
  */
-
+/*These are functions for putting the food in different places.*/
 function foodInitialize() {
     food = {
         x: 0,
@@ -169,6 +170,7 @@ function setFoodPosition() {
  * ----------------------------
  */
 
+/*This function makes the snake move.*/
 function keyboardHandler(event) {
     console.log(event);
 
@@ -195,6 +197,7 @@ function keyboardHandler(event) {
  */
 
 
+/*This fuction makes our snake eat the food and grow.*/
 function checkFoodCollisions(snakeHeadX, snakeHeadY) {
     if (snakeHeadX == food.x && snakeHeadY == food.y) {
         snake.push({
@@ -202,15 +205,23 @@ function checkFoodCollisions(snakeHeadX, snakeHeadY) {
             y: 0
         });
         snakeLength++;
+        setFoodPosition();
     }
 }
 
+/*This function does is when you collide your snake into the sides of the screen it makes it start over.*/
 function checkWallCollisions(snakeHeadX, snakeHeadY) {
     if (snakeHeadX * snakeSize >= screenWidth || snakeHeadX * snakeSize < 0) {
         setState("GAME OVER");
     }
+    if (snakeHeadY * snakeSize >= screenHeight || snakeHeadY * snakeSize < 0) {
+        setState("GAME OVER");
+
+
+    }
 }
 
+/*This functions does is when you collide the snakes head into his body, it makes it start over.*/
 function checkSnakeCollisions(snakeHeadX, snakeHeadY) {
     for (var index = 1; index < snake.length; index++)
         if (snakeHeadX == snake[index].x && snakeHeadY == snake[index].y) {
@@ -234,6 +245,7 @@ function setState(state) {
  *----------------------------------------------------------------------------------------
  */
 
+/*These 2 function makes the game over to disapear while playing.*/
 function displayMenu(menu) {
     menu.style.visibility = "visible";
 }
@@ -241,7 +253,7 @@ function displayMenu(menu) {
 function hideMenu(menu) {
     menu.style.visibility = "hidden"
 }
-
+/*These are functions that makes the game over to function. */
 function showMenu(state) {
     if (state == "GAME OVER") {
         displayMenu(gameOverMenu);
@@ -250,13 +262,13 @@ function showMenu(state) {
         displayMenu(playHUD);
     }
 }
-
+/*This is where you can move your game over menu.*/
 function centerMenuPosition(menu) {
     menu.style.top = (screenHeight / 2) - (menu.offsetHeight / 2) + "px";
     menu.style.left = (screenWidth / 2) - (menu.offsetWidth / 2) + "px";
 }
 
-/**/
+/*This is the scoreboard to track your score.*/
 function drawScoreboard() {
     scoreboard.innerHTML = "Length :" + snakeLength;
 }
