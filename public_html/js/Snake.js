@@ -3,7 +3,6 @@
  *--------------------------------------
  */
 
-
 var snake;
 var snakeLength;
 var snakeSize;
@@ -35,6 +34,7 @@ setInterval(gameLoop, 1000 / 30);
  * ---------------------------------------------
  */
 
+/*These are functions for the game to function.*/
 function gameInitialize() {
     var canvas = document.getElementById("game-screen");
     context = canvas.getContext("2d");
